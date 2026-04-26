@@ -1,0 +1,33 @@
+.app-layout {
+  width: 100%;
+  max-width: 1000px;
+  height: 90vh;
+  min-height: 600px;
+  margin: 0 auto;
+  display: flex;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  background-color: var(--chat-bg);
+  overflow: hidden;
+}
+
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .app-layout {
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+  
+  #root {
+    padding: 0;
+  }
+}
