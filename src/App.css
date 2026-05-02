@@ -1,15 +1,25 @@
 .app-layout {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1240px;
   height: 90vh;
-  min-height: 600px;
   margin: 0 auto;
   display: flex;
-  box-shadow: var(--shadow-lg);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  background-color: var(--chat-bg);
+  flex-direction: column;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(99, 102, 241, 0.1);
+  border-radius: var(--radius-xl);
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .app-layout {
+    height: 100vh;
+    border-radius: 0;
+    max-width: 100%;
+  }
 }
 
 .chat-window {
@@ -17,17 +27,54 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
 }
 
-@media (max-width: 768px) {
-  .app-layout {
-    height: 100vh;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-  }
-  
-  #root {
-    padding: 0;
-  }
+.tab-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--bg-color);
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+}
+
+.primary-glow {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+}
+
+.primary-glow:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.23);
+}
+
+.secondary-glow {
+  background-color: var(--chat-bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.secondary-glow:hover {
+  background-color: var(--bg-color);
+  border-color: var(--text-muted);
+  transform: translateY(-2px);
 }

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ChatInput.css';
 
-const ChatInput = ({ onSendMessage, isLoading }) => {
+const ChatInput = ({ onSendMessage, isLoading, onStop }) => {
   const [input, setInput] = useState('');
   const textareaRef = useRef(null);
 
@@ -50,14 +50,15 @@ const ChatInput = ({ onSendMessage, isLoading }) => {
             rows={1}
           />
           <button 
-            type="submit" 
-            className={`send-button ${input.trim() && !isLoading ? 'active' : ''}`}
-            disabled={!input.trim() || isLoading}
+            type={isLoading ? "button" : "submit"} 
+            className={`send-button ${input.trim() || isLoading ? 'active' : ''} ${isLoading ? 'stop-mode' : ''}`}
+            onClick={isLoading ? onStop : undefined}
+            disabled={!input.trim() && !isLoading}
           >
             {isLoading ? (
-              <div className="loading-dots">
-                <span></span><span></span><span></span>
-              </div>
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <rect x="6" y="6" width="12" height="12" rx="2"></rect>
+              </svg>
             ) : (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="22" y1="2" x2="11" y2="13"></line>

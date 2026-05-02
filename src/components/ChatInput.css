@@ -25,7 +25,8 @@
 
 .input-wrapper:focus-within {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15), 0 0 20px rgba(79, 70, 229, 0.1);
+  transform: translateY(-1px);
 }
 
 .message-input {
@@ -39,10 +40,6 @@
   resize: none;
   max-height: 120px;
   outline: none;
-}
-
-.message-input::placeholder {
-  color: var(--text-muted);
 }
 
 .send-button {
@@ -61,11 +58,6 @@
   margin-left: 0.5rem;
 }
 
-.send-button svg {
-  width: 20px;
-  height: 20px;
-}
-
 .send-button.active {
   background-color: var(--primary-color);
   color: white;
@@ -74,7 +66,14 @@
 
 .send-button.active:hover {
   background-color: var(--primary-hover);
-  transform: scale(1.05);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.send-button.stop-mode {
+  background-color: var(--text-main);
+  color: white;
+  cursor: pointer;
 }
 
 .disclaimer {
@@ -82,31 +81,4 @@
   font-size: 0.75rem;
   color: var(--text-muted);
   margin-top: 0.75rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Loading Dots Animation */
-.loading-dots {
-  display: flex;
-  gap: 3px;
-  align-items: center;
-  justify-content: center;
-}
-
-.loading-dots span {
-  width: 4px;
-  height: 4px;
-  background-color: var(--text-muted);
-  border-radius: 50%;
-  animation: bounce 1.4s infinite ease-in-out both;
-}
-
-.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
-.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
-
-@keyframes bounce {
-  0%, 80%, 100% { transform: scale(0); }
-  40% { transform: scale(1); }
 }
